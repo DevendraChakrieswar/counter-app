@@ -2,13 +2,16 @@ import "./App.css";
 import {useState} from "react";
 
 function App() {
-  const[count, setCount] = useState(0);
+  const[count, setCount] = useState( () => {
+    console.log('running function');
+    return 0;
+  });
 
   function decreaseHandler() {
-    setCount(count - 1);
+    setCount(prevCount => prevCount -1);
   }
   function increaseHandler() {
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1);
   }
   function resetHandler() {
     setCount(0);
